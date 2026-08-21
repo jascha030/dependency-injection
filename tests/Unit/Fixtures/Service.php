@@ -11,19 +11,22 @@
 
 declare(strict_types=1);
 
-namespace Jascha030\DependencyInjection;
-
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
+namespace Jascha030\DI\Fixtures;
 
 /**
  * @internal
  */
-#[CoversClass(Example::class)]
-final class ExampleTest extends TestCase
+final class Service
 {
-    public function testExample(): void
+    private DependencyInterface $dependency;
+
+    public function __construct(DependencyInterface $dependency)
     {
-        self::assertSame('Hello, world!', new Example()->hello());
+        $this->dependency = $dependency;
+    }
+
+    public function getDependency(): DependencyInterface
+    {
+        return $this->dependency;
     }
 }

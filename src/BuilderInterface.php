@@ -11,12 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Jascha030\DependencyInjection;
+namespace Jascha030\DI;
 
-final class Example
+use Psr\Container\ContainerInterface;
+
+interface BuilderInterface
 {
-    public function hello(): string
-    {
-        return 'Hello, world!';
-    }
+    public function __invoke(ContainerConfigInterface $config): ContainerInterface;
 }
